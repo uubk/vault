@@ -33,6 +33,7 @@
     "@hashicorp/react-text-splits": "^3.2.5",
     "@hashicorp/react-use-cases": "^4.0.1",
     "@hashicorp/react-vertical-text-block-list": "^6.0.3",
+    "fathom-client": "^3.2.0",
     "next": "10.2.2",
     "next-mdx-remote": "3.0.2",
     "next-remote-watch": "1.0.0",
