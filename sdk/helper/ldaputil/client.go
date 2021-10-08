@@ -121,7 +121,7 @@ func (c *Client) GetUserBindDN(cfg *ConfigEntry, conn Connection, username strin
 
 		filter := fmt.Sprintf("(%s=%s)", cfg.UserAttr, ldap.EscapeFilter(username))
 		if cfg.UPNDomain != "" {
-			filter = fmt.Sprintf("(userPrincipalName=%s@%s)", EscapeLDAPValue(username), cfg.UPNDomain)
+			filter = fmt.Sprintf("(%s=%s@%s)", cfg.UPNAttribute, EscapeLDAPValue(username), cfg.UPNDomain)
 		}
 
 		if c.Logger.IsDebug() {
@@ -158,7 +158,7 @@ func (c *Client) GetUserDN(cfg *ConfigEntry, conn Connection, bindDN, username s
 	userDN := ""
 	if cfg.UPNDomain != "" {
 		// Find the distinguished name for the user if userPrincipalName used for login
-		filter := fmt.Sprintf("(userPrincipalName=%s@%s)", EscapeLDAPValue(username), cfg.UPNDomain)
+		filter := fmt.Sprintf("(%s=%s@%s)", cfg.UPNAttribute, EscapeLDAPValue(username), cfg.UPNDomain)
 		if c.Logger.IsDebug() {
 			c.Logger.Debug("searching upn", "userdn", cfg.UserDN, "filter", filter)
 		}
